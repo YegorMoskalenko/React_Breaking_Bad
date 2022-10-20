@@ -4,8 +4,9 @@ import {useHistory, useParams} from "react-router-dom";
 import RootStore from '../storeMobx'
 import '../components/seasonPage/episodes/styles/episodes.scss'
 import {animateItems} from "../mixins/animation/animateItems";
+import {observer} from "mobx-react";
 
-const SeasonPage = () => {
+const SeasonPage = observer(() => {
     const params = useParams()
     const router = useHistory()
 
@@ -25,6 +26,6 @@ const SeasonPage = () => {
             }
         </main>
     );
-};
+});
 
 export default SeasonPage;

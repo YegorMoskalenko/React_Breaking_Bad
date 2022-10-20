@@ -44,6 +44,12 @@ export const breakingBadForRedux = {
                     occupationsNewObj[occOne].push(char[1].name)
                 }
             })
+
+            let charInEpisodes = []
+            episodes.forEach(episode =>
+                episode.characters.forEach(character => character === char[1].name ? charInEpisodes.push(episode.title) : false)
+            )
+            charactersNewObj[char[1].name].episodesWithCharacter = [...charInEpisodes]
         })
 
         dispatch(setOccupations(occupationsNewObj))

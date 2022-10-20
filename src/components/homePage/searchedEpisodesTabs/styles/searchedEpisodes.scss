@@ -1,0 +1,13 @@
+.episode-tab.anim-active{
+  transform: translate(0, 0) !important;
+  opacity: 1 !important;
+}
+.episode-tab{
+  transform: translate(0, 150px);
+  opacity: 0;
+  transition: all 0.5s ease 0s !important;
+
+  &:hover{
+    transform: scale(1.05) !important;
+  }
+}

@@ -2,8 +2,9 @@ import React, {useEffect, useMemo} from 'react';
 import {animateItems} from "../mixins/animation/animateItems";
 import './styles/topDeaths.scss'
 import RootStore from '../storeMobx'
+import {observer} from "mobx-react";
 
-const TopDeaths = () => {
+const TopDeaths = observer(() => {
     const getTopDeaths = useMemo(() => {
         return Object.entries(RootStore.breakingBad.breakingBadState.characters).sort((a,b) => b[1].numOfDeaths - a[1].numOfDeaths)
     }, [])
@@ -42,6 +43,6 @@ const TopDeaths = () => {
             </div>
         </main>
     );
-};
+});
 
 export default TopDeaths;

@@ -3,8 +3,9 @@ import {animateItems} from "../mixins/animation/animateItems";
 import {useParams} from "react-router-dom";
 import RootStore from '../storeMobx'
 import EpisodeTab from "../components/seasonPage/episodes/EpisodeTab";
+import {observer} from "mobx-react";
 
-const EpisodePage = () => {
+const EpisodePage = observer(() => {
     const params = useParams()
     const episodeNumParam = +params.episodeId
 
@@ -23,6 +24,6 @@ const EpisodePage = () => {
             </div>
         </main>
     );
-};
+})
 
 export default EpisodePage;

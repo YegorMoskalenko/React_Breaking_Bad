@@ -1,8 +1,9 @@
 import React from 'react';
 import SeasonTab from './SeasonsTab'
 import RootStore from '../../../storeMobx'
+import {observer} from "mobx-react";
 
-const SeasonsTabs = () => {
+const SeasonsTabs = observer(() => {
     return (
         <div className="seasons anim-items">
             {Object.entries(RootStore.breakingBad.breakingBadState.seasons).map(([seasonNum, seasonContent]) =>
@@ -13,6 +14,6 @@ const SeasonsTabs = () => {
             )}
         </div>
     );
-};
+});
 
 export default SeasonsTabs;

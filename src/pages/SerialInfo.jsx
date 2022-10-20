@@ -2,8 +2,9 @@ import React, {useEffect} from 'react';
 import './styles/serialinfo.scss'
 import RootStore from '../storeMobx'
 import {animateItems} from "../mixins/animation/animateItems";
+import {observer} from "mobx-react";
 
-const SerialInfo = () => {
+const SerialInfo = observer(() => {
     useEffect(() => {
         animateItems()
     }, [])
@@ -42,6 +43,6 @@ const SerialInfo = () => {
             </div>
         </main>
     );
-};
+});
 
 export default SerialInfo;

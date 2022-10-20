@@ -1,7 +1,8 @@
 import React from 'react';
 import RootStore from '../../storeMobx'
+import {observer} from "mobx-react";
 
-const Occupations = () => {
+const Occupations = observer(() => {
     return (
         <div className="occupations anim-items">
             <ul className="occupations__ul">
@@ -18,6 +19,6 @@ const Occupations = () => {
             </ul>
         </div>
     );
-};
+});
 
 export default Occupations;

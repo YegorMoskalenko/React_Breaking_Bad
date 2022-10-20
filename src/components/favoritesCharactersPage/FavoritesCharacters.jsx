@@ -2,8 +2,9 @@ import React, {useEffect, useRef, useState} from 'react';
 import {TransitionGroup, CSSTransition} from "react-transition-group";
 import RootStore from '../../storeMobx'
 import {useHistory} from "react-router-dom";
+import {observer} from "mobx-react";
 
-const FavoritesCharacters = () => {
+const FavoritesCharacters = observer(() => {
     const router = useHistory()
     const isInitialMount = useRef(true)
 
@@ -47,6 +48,6 @@ const FavoritesCharacters = () => {
             }
         </div>
     );
-};
+});
 
 export default FavoritesCharacters;

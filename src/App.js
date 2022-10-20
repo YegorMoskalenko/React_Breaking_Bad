@@ -29,6 +29,6 @@ const App = observer(() => {
             <AppRouter />
         </BrowserRouter>
     );
-})
+});
 
 export default App;

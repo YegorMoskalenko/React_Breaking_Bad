@@ -1,18 +1,20 @@
 const breakingBadState = {
-    episodes: [],
-    seasons: {
-        1: [],
-        2: [],
-        3: [],
-        4: [],
-        5: []
-    },
-    characters: {},
-    deaths: {},
-    quotes: {},
-    favoritesCharacters: [],
-    occupations: {},
-    serialInfo: {}
+    breakingBadData: {
+        episodes: [],
+        seasons: {
+            1: [],
+            2: [],
+            3: [],
+            4: [],
+            5: []
+        },
+        characters: {},
+        deaths: {},
+        quotes: {},
+        favoritesCharacters: [],
+        occupations: {},
+        serialInfo: {}
+    }
 }
 
 const SET_EPISODES = 'SET_EPISODES'
@@ -27,21 +29,21 @@ const SET_SERIAL_INFO = 'SET_SERIAL_INFO'
 export const breakingBadReducer = (state = breakingBadState, action) => {
     switch (action.type){
         case SET_EPISODES:
-            return {...state, episodes: action.payload}
+            return {...state, breakingBadData: {...state.breakingBadData, episodes: action.payload}}
         case SET_SEASONS:
-            return {...state, seasons: action.payload}
+            return {...state, breakingBadData: {...state.breakingBadData, seasons: action.payload}}
         case SET_CHARACTERS:
-            return {...state, characters: action.payload}
+            return {...state, breakingBadData: {...state.breakingBadData, characters: action.payload}}
         case SET_DEATHS:
-            return {...state, deaths: action.payload}
+            return {...state, breakingBadData: {...state.breakingBadData, deaths: action.payload}}
         case SET_QUOTES:
-            return {...state, quotes: action.payload}
+            return {...state, breakingBadData: {...state.breakingBadData, quotes: action.payload}}
         case SET_FAVORITES_CHARACTERS:
-            return {...state, favoritesCharacters: action.payload}
+            return {...state, breakingBadData: {...state.breakingBadData, favoritesCharacters: action.payload}}
         case SET_OCCUPATIONS:
-            return {...state, occupations: action.payload}
+            return {...state, breakingBadData: {...state.breakingBadData, occupations: action.payload}}
         case SET_SERIAL_INFO:
-            return {...state, serialInfo: action.payload}
+            return {...state, breakingBadData: {...state.breakingBadData, serialInfo: action.payload}}
         default: return state
     }
 }
