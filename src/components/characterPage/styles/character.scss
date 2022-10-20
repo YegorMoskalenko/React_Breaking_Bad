@@ -1,0 +1,219 @@
+.not-info-about-character{
+  display: flex;
+  justify-content: center;
+  font-size: 40px;
+  font-weight: 900;
+}
+.character{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 25px;
+
+  .character__title.anim-active{
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  .character__title{
+    font-size: 30px;
+    font-weight: 900;
+    text-align: center;
+    text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    transform: translate(-150px, 0);
+    transition: all 0.9s ease 0s;
+  }
+  .character__info.anim-active{
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  .character__info{
+    color: #ffffff;
+    padding: 25px;
+    margin-top: 15px;
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    backdrop-filter: blur(1px);
+    background: rgba(0, 0, 0, .55);
+    opacity: 0;
+    transform: translate(0, 150px);
+    transition: all 0.6s ease 0s;
+
+    &:hover{
+      color: #000000;
+      background: rgba(255, 255, 255, .55);
+      transform: scale(1.01) !important;
+
+      .add-to-favor{
+        .remove-from-favor__div{
+          .remove-from-favor__text{
+            text-shadow: 0 0 8px #000000;
+          }
+        }
+      }
+
+      .character__info__quotes{
+        border-bottom: 2px solid #000000;
+      }
+
+      .character__info__content{
+        .season-number{
+          border-bottom: 2px solid #000000;
+        }
+        .responsible{
+          border-bottom: 2px solid #000000;
+        }
+        .character-is-responsible{
+          .character-is-responsible__info{
+            border-bottom: 2px solid #000000;
+          }
+        }
+      }
+    }
+
+    .add-to-favor{
+      display: flex;
+      justify-content: flex-end;
+
+      .add-to-favor__btn{
+        border: 2px solid #7d001f;
+        border-radius: 8px;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: #ffffff;
+        background: green;
+        padding: 5px;
+        cursor: pointer;
+        transition: all 0.6s ease 0s;
+
+        &:hover{
+          background: #006f46;
+          box-shadow: 0 0 10px #7d001f;
+          transform: scale(1.05);
+        }
+      }
+
+      .remove-from-favor__div{
+        display: flex;
+
+        .remove-from-favor__text{
+          font-size: 20px;
+          font-weight: 500;
+          text-shadow: 0 0 8px #ffffff;
+          transition: text-shadow 0.6s ease 0s;
+          margin-right: 10px;
+        }
+        .remove-from-favor__btn{
+          border: 2px solid #7d001f;
+          border-radius: 8px;
+          text-transform: uppercase;
+          font-weight: 700;
+          color: #ffffff;
+          background: green;
+          padding: 5px;
+          cursor: pointer;
+          transition: all 0.6s ease 0s;
+
+          &:hover{
+            background: #006f46;
+            box-shadow: 0 0 10px #7d001f;
+            transform: scale(1.05);
+          }
+        }
+      }
+    }
+
+    .character__info__status{
+      font-size: 20px;
+      font-weight: 500;
+      margin: 10px 0;
+    }
+
+    .character__info__birthday{
+      font-size: 20px;
+      font-weight: 500;
+      margin: 10px 0;
+    }
+
+    .character__info__content{
+      .character-is-responsible{
+        margin: 15px 0;
+
+        .character-is-responsible__info{
+          border-bottom: 2px solid #ffffff;
+          transition: border-bottom-color 0.6s ease 0s;
+
+          .character-is-responsible__info__li{
+            &:last-child{
+              margin-bottom: 15px;
+            }
+          }
+        }
+      }
+      .character__info__content__title{
+        font-size: 20px;
+        font-weight: 700;
+      }
+      .season-number{
+        margin: 15px 0;
+        display: flex;
+        border-bottom: 2px solid #ffffff;
+        transition: border-bottom-color 0.6s ease 0s;
+
+
+        .season-number__num{
+          font-weight: 400;
+          font-size: 20px;
+          margin: 0 0 15px 10px;
+        }
+      }
+      .responsible{
+        margin: 15px 0;
+        display: flex;
+        border-bottom: 2px solid #ffffff;
+        transition: border-bottom-color 0.6s ease 0s;
+
+        .responsible__info{
+          font-weight: 400;
+          font-size: 20px;
+          margin: 0 0 15px 10px;
+        }
+      }
+      .character-in-episodes{
+        .episodes__titles{
+          margin: 20px 0;
+        }
+      }
+    }
+
+    .character__info__quotes{
+      border-bottom: 2px solid #ffffff;
+      transition: border-bottom-color 0.6s ease 0s;
+
+      .quotes{
+        margin: 15px 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .character{
+    .character__info{
+      .add-to-favor{
+        .add-to-favor__btn{
+          font-size: 12px;
+        }
+        .remove-from-favor__div{
+          .remove-from-favor__text{
+            font-size: 16px;
+          }
+          .remove-from-favor__btn{
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+}

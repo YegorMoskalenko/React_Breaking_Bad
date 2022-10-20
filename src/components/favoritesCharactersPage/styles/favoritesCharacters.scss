@@ -1,0 +1,104 @@
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
+}
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+.favorites-characters.anim-active{
+  opacity: 1;
+  transform: translate(0, 0);
+}
+.favorites-characters{
+  display: flex;
+  justify-content: center;
+  opacity: 0;
+  transform: translate(0, 150px);
+  transition: all 1.2s ease 0s;
+
+  .favorites-characters__none{
+    font-size: 40px;
+    font-weight: 700;
+  }
+
+  .favorites-characters__ul{
+    display: flex;
+    flex-direction: column;
+
+    .favChar-enter {
+      transform: translateX(200px);
+    }
+    .favChar-enter-active {
+      transform: translateX(0);
+      transition: all 0.6s ease-in;
+    }
+    .favChar-exit {
+      opacity: 1;
+    }
+    .favChar-exit-active {
+      transform: translateX(-200px);
+      transition: all 0.6s ease-in;
+      opacity: 0;
+    }
+
+    .favorites-characters__li{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 10px 0;
+      border: 2px solid #000000;
+      padding: 10px 15px;
+      border-radius: 10px;
+      backdrop-filter: blur(2px);
+      box-shadow: 5px 5px 5px rgba(0, 0, 0, .7);
+
+      .favorites-characters__btn{
+        font-size: 22px;
+        font-weight: 500;
+        border: 2px solid #7d001f;
+        border-radius: 10px;
+        padding: 5px;
+        cursor: pointer;
+        background: green;
+        color: #ffffff;
+        transition: all 0.3s ease 0s;
+
+        &:hover{
+          background: #006f46;
+          box-shadow: 0 0 8px green;
+        }
+      }
+
+      .favorites-characters__name{
+        font-size: 22px;
+        font-weight: 500;
+        color: #000000;
+        cursor: pointer;
+        margin-right: 20px;
+        transition: all 0.3s ease 0s;
+
+        &:hover{
+          transform: scale(1.08);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .favorites-characters{
+    .favorites-characters__ul{
+      .favorites-characters__li{
+        .favorites-characters__btn{
+          font-size: 16px;
+        }
+        .favorites-characters__name{
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,129 @@
+.seasons.anim-active{
+  transform: translate(0, 0);
+  opacity: 1;
+}
+.seasons{
+  display: flex;
+  justify-content: center;
+
+  margin: 40px 15px;
+
+  opacity: 0;
+  transform: translate(0, 150px);
+  transition: all 1.2s ease 0s;
+
+  .seasons__season{
+    background-image: url("../../../../assets/images/Background2.jpg");
+    background-size: cover;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.75);
+    cursor: pointer;
+
+    margin: 0 20px;
+    border-radius: 10px;
+
+    width: 300px;
+    height: 400px;
+
+    transition: all 0.6s ease 0s;
+
+    &:hover{
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.95);
+      transform: scale(1.15);
+
+      .seasons__season__content{
+        backdrop-filter: blur(0);
+
+        .seasons__season__content__title{
+          margin-top: 0;
+        }
+
+        .seasons__season__content__text{
+          margin-top: 100px;
+          opacity: 1;
+        }
+      }
+    }
+
+    .seasons__season__content{
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      border-radius: 10px;
+
+      backdrop-filter: blur(5px);
+      height: 100%;
+
+      .seasons__season__content__title{
+        color: #7d001f;
+        font-size: 32px;
+        font-weight: 900;
+        margin-top: 65px;
+        transition: all 0.6s ease 0s;
+      }
+      .seasons__season__content__text{
+        color: #006f46;
+        border: 2px solid #006f46;
+        border-radius: 100px;
+        background: rgba(255, 255, 255, 0.5);
+        padding: 10px 18px;
+        font-size: 28px;
+        font-weight: 700;
+        opacity: 0;
+        transition: all 0.6s ease 0s;
+      }
+    }
+  }
+}
+
+@media (max-width: 1280px) {
+  .seasons{
+    flex-direction: column;
+    align-items: center;
+
+    margin: 32px 0 32px 0;
+
+    .seasons__season{
+      margin: 15px 10px;
+      height: 350px;
+      width: 85%;
+
+      &:hover{
+        transform: scale(1.1);
+      }
+
+      .seasons__season__content{
+        .seasons__season__content__title{
+          font-size: 40px;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 900px) {
+  .seasons{
+    .seasons__season{
+      height: 200px;
+
+      &:hover{
+        .seasons__season__content{
+          .seasons__season__content__title{
+            margin-top: 0;
+          }
+          .seasons__season__content__text{
+            margin-top: 40px;
+          }
+        }
+      }
+
+      .seasons__season__content{
+        .seasons__season__content__title{
+          font-size: 28px;
+        }
+        .seasons__season__content__text{
+          font-size: 24px;
+        }
+      }
+    }
+  }
+}

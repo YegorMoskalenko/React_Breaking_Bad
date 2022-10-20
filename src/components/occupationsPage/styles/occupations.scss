@@ -1,0 +1,71 @@
+.occupations.anim-active{
+  opacity: 1;
+  transform: translate(0, 0);
+}
+.occupations{
+  display: flex;
+  justify-content: center;
+  opacity: 0;
+  transform: translate(0, 150px);
+  transition: all 1.2s ease 0s;
+
+  .occupations__ul{
+    width: 1000px;
+    margin: 0 25px;
+    border: 2px solid #000000;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, .5);
+    color: #ffffff;
+    backdrop-filter: blur(1px);
+    background: rgba(0, 0, 0, .55);
+    transition: all 0.6s ease 0s;
+
+    &:hover{
+      color: #000000;
+      background: rgba(255, 255, 255, .35);
+      transform: scale(1.01);
+
+      .occupations__li{
+        border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+      }
+    }
+
+    .occupations__li{
+      display: flex;
+      align-items: center;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+      margin: 15px 0;
+
+      .occupations__li__value{
+        font-size: 20px;
+        font-weight: 500;
+        text-shadow: 0 0 5px rgba(255, 255, 255, .6);
+      }
+
+      .occupations__li__occup-ul{
+        display: flex;
+      }
+
+      .occupations__li__occup-ul{
+        margin-left: 20px;
+      }
+    }
+  }
+}
+
+@media (max-width: 425px) {
+  .occupations{
+    .occupations__ul{
+      .occupations__li{
+        .occupations__li__value{
+          font-size: 14px;
+        }
+        .occupations__li__occup-ul{
+          margin-left: 10px;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}
