@@ -45,7 +45,7 @@ const Character = observer(({characterStrName}) => {
                 <div className="character__info anim-items">
                     <div className="add-to-favor">
                         {!breakingBadState.favoritesCharacters.includes(characterStrName)
-                            ?   <button className="add-to-favor__btn" onClick={() => addCharacterToFavorites()}>Add to favorites</button>
+                            ?   <button className="add-to-favor__btn" onClick={addCharacterToFavorites}>Add to favorites</button>
                             :   <div className="remove-from-favor__div">
                                 <p className="remove-from-favor__text">Already in favorites</p>
                                 <button className="remove-from-favor__btn" onClick={() => removeCharacterFromFavorites(breakingBadState.favoritesCharacters.indexOf(characterStrName))}>Remove from favorites</button>
@@ -157,7 +157,7 @@ const Character = observer(({characterStrName}) => {
 //                 <div className="character__info anim-items">
 //                     <div className="add-to-favor">
 //                         {!breakingBadState.favoritesCharacters.includes(characterStrName)
-//                             ?   <button className="add-to-favor__btn" onClick={() => addCharacterToFavorites()}>Add to favorites</button>
+//                             ?   <button className="add-to-favor__btn" onClick={addCharacterToFavorites}>Add to favorites</button>
 //                             :   <div className="remove-from-favor__div">
 //                                 <p className="remove-from-favor__text">Already in favorites</p>
 //                                 <button className="remove-from-favor__btn" onClick={() => removeCharacterFromFavorites(breakingBadState.favoritesCharacters.indexOf(characterStrName))}>Remove from favorites</button>

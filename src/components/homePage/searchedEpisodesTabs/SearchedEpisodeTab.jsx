@@ -58,13 +58,17 @@ const SearchedEpisodeTab = observer(({episode}) => {
         }
     }
 
+    const pushToEpisode = () => {
+        return router.push(`/episode/${episode[1].episode_id}`)
+    }
+
     useEffect(() => {
         animateItems()
         setDeathsModel()
     }, [])
 
     return (
-        <div className="episode-tab anim-items" onClick={() => router.push(`/episode/${episode[1].episode_id}`)}>
+        <div className="episode-tab anim-items" onClick={pushToEpisode}>
             <div className="episodes-tab__title episode-tab__child">
                 <p className="episodes-tab__title__text episode-tab__child__p">{episode[1].title}</p>
             </div>
@@ -74,12 +78,11 @@ const SearchedEpisodeTab = observer(({episode}) => {
                     <p>{reverseAirDate}</p>
                 </div>
             </div>
-            {weatherModel !== null
-                ?    <div className="weather-info episode-tab__child">
-                        <p className="weather-info__title">Description for {reverseAirDate}:</p>
-                        <p className="weather-info__description">{weatherModel.description}</p>
-                    </div>
-                : false
+            {weatherModel !== null &&
+                <div className="weather-info episode-tab__child">
+                    <p className="weather-info__title">Description for {reverseAirDate}:</p>
+                    <p className="weather-info__description">{weatherModel.description}</p>
+                </div>
             }
             <div className="search-weather episode-tab__child" onClick={e => e.stopPropagation()}>
                 <input
@@ -88,11 +91,11 @@ const SearchedEpisodeTab = observer(({episode}) => {
                     type="text"
                     className="search-weather__input"
                     placeholder="Write a city"
-                    onFocus={() => {setErrorFromFetch(() => false); setErrorFromCondition(() => false)}}
+                    onFocus={() => {setErrorFromFetch(false); setErrorFromCondition(false)}}
                 />
-                <button className="search-weather__btn" onClick={() => fetchWeather()}>Get weather info</button>
-                {errorFromCondition === true ? <p className="error-from-condition">Write name of the city!</p> : false}
-                {errorFromFetch === true ? <p className="error-from-fetch">Write correct name of the city or the city not found!</p> : false}
+                <button className="search-weather__btn" onClick={fetchWeather}>Get weather info</button>
+                {errorFromCondition === true && <p className="error-from-condition">Write name of the city!</p>}
+                {errorFromFetch === true && <p className="error-from-fetch">Write correct name of the city or the city not found!</p>}
             </div>
             <div className="episode-tab__characters episode-tab__child">
                 <p className="episode-tab__characters__title">Characters:</p>
@@ -103,11 +106,10 @@ const SearchedEpisodeTab = observer(({episode}) => {
                     />
                 )}
             </div>
-            {router.location.pathname === `/episode/${episode[1].episode_id}`
-                ? Object.entries(deaths).map(([index, death]) =>
+            {router.location.pathname === `/episode/${episode[1].episode_id}` &&
+                Object.entries(deaths).map(([index, death]) =>
                     <DeathInfo key={+index} number={+index + 1} death={death[1]} />
                 )
-                : false
             }
         </div>
     );

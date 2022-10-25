@@ -25,9 +25,8 @@ const TopDeaths = observer(() => {
                                 <img src={getTopDeaths[index - 1][1].img} alt="" className="char-img"/>
                                 <div className="top-deaths__characters__info">
                                     <p className="top-deaths__characters__name">{getTopDeaths[index - 1][0]}</p>
-                                    {getTopDeaths[index - 1][1].numOfDeaths > 1
-                                        ?   <p className="top-deaths__characters__info__num-of-deaths">Num of Deaths - {getTopDeaths[index - 1][1].numOfDeaths}</p>
-                                        : false
+                                    {getTopDeaths[index - 1][1].numOfDeaths > 1 &&
+                                        <p className="top-deaths__characters__info__num-of-deaths">Num of Deaths - {getTopDeaths[index - 1][1].numOfDeaths}</p>
                                     }
                                     <p className="who-died">Who died:</p>
                                     <ul className="top-deaths__characters__info__ul">

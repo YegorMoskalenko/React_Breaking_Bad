@@ -18,17 +18,16 @@ const HomePage = () => {
             <div className="search-episodes anim-items">
                 <input
                     value={searchEpisodeValue}
-                    onChange={e => setSearchEpisodeValue(() => e.target.value)}
+                    onChange={e => setSearchEpisodeValue(e.target.value)}
                     className="search-episodes__input"
                     type="text"
                     placeholder="Search episode..."
                 />
             </div>
-            {searchEpisodeValue.length > 0
-                ?   <SearchedEpisodesTabs
+            {!!searchEpisodeValue.length &&
+                   <SearchedEpisodesTabs
                         searchEpisodeValue={searchEpisodeValue}
                     />
-                : false
             }
             <SeasonsTabs />
         </main>

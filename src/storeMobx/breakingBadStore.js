@@ -1,6 +1,6 @@
 import {getPersistedStore, hydrateStore, makePersistable, stopPersisting} from 'mobx-persist-store';
 
-import {configure, makeObservable, observable, action} from "mobx"
+import {configure, makeObservable, observable, action, makeAutoObservable} from "mobx"
 
 configure({
     enforceActions: "never"
@@ -25,19 +25,7 @@ export class BreakingBadStore {
     }
 
     constructor() {
-        makeObservable(this, {
-            breakingBadState: observable,
-            hydrateStore: action,
-            SET_EPISODES: action,
-            SET_SEASONS: action,
-            SET_CHARACTERS: action,
-            SET_DEATHS: action,
-            SET_OCCUPATIONS: action,
-            SET_FAVORITES_CHARACTERS: action,
-            SET_QUOTES: action,
-            SET_SERIAL_INFO: action
-
-        }, {deep: true})
+        makeAutoObservable(this)
         makePersistable(this, { name: 'BreakingBadStore', properties: ['breakingBadState'], storage: window.localStorage });
     }
 

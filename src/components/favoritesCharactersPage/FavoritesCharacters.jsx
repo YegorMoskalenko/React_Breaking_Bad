@@ -6,26 +6,19 @@ import {observer} from "mobx-react";
 
 const FavoritesCharacters = observer(() => {
     const router = useHistory()
-    const isInitialMount = useRef(true)
 
-    const [favoriteCharacters, setFavoriteCharacters] = useState([...RootStore.breakingBad.breakingBadState.favoritesCharacters])
+    const favoriteCharacters = RootStore.breakingBad.breakingBadState.favoritesCharacters
 
     const removeFromFavoriteCharacters = charIndex => {
-        let favCharsNewObj = [...RootStore.breakingBad.breakingBadState.favoritesCharacters]
+        let favCharsNewObj = [...favoriteCharacters]
         favCharsNewObj = favCharsNewObj.filter((favoritesCharacterNew, index) => favCharsNewObj[index] !== favCharsNewObj[charIndex])
-        setFavoriteCharacters(() => [...favCharsNewObj])
-    }
-    const setFavoritesCharactersToStore = () => {
-        return RootStore.breakingBad.SET_FAVORITES_CHARACTERS(favoriteCharacters)
+
+        return RootStore.breakingBad.SET_FAVORITES_CHARACTERS(favCharsNewObj)
     }
 
-    useEffect(() => {
-        if (isInitialMount.current) {
-            isInitialMount.current = false;
-        }else {
-            setFavoritesCharactersToStore()
-        }
-    }, [favoriteCharacters])
+    const pushToCharacterPage = favoriteCharacter => {
+        router.push(`/character/${favoriteCharacter.replaceAll(' ', '-')}`)
+    }
 
     return (
         <div className="favorites-characters anim-items">
@@ -38,7 +31,7 @@ const FavoritesCharacters = observer(() => {
                             classNames="favChar"
                         >
                             <li className="favorites-characters__li">
-                                <p className="favorites-characters__name" onClick={() => router.push(`/character/${favoriteCharacter.replaceAll(' ', '-')}`)}>{favoriteCharacter}</p>
+                                <p className="favorites-characters__name" onClick={() => pushToCharacterPage(favoriteCharacter)}>{favoriteCharacter}</p>
                                 <button className="favorites-characters__btn" onClick={() => removeFromFavoriteCharacters(index)}>Remove from favorites</button>
                             </li>
                         </CSSTransition>

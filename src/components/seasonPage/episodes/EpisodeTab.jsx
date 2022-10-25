@@ -22,6 +22,10 @@ const EpisodeTab = observer(({episode, seasonNumUrlParam}) => {
         setDeaths(() => Object.entries(RootStore.breakingBad.breakingBadState.deaths).filter(deathFromArr => +deathFromArr[1].episode === +episode.episode))
     }
 
+    const clickOnEpisodeTab = () => {
+        router.location.pathname === `/season/${seasonNumUrlParam}` && router.push(`/episode/${episode.episode_id}`)
+    }
+
     const fetchWeather = async () => {
         let numsStr = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
         let strHasNum = true
@@ -61,7 +65,7 @@ const EpisodeTab = observer(({episode, seasonNumUrlParam}) => {
     }, [])
 
     return (
-        <div className={`episode-tab anim-items ${router.location.pathname === '/episode/' + episode.episode_id ? 'episodes-page__tab' : '' }`} onClick={() => router.location.pathname === `/season/${seasonNumUrlParam}` ? router.push(`/episode/${episode.episode_id}`) : false}>
+        <div className={`episode-tab anim-items ${router.location.pathname === '/episode/' + episode.episode_id ? 'episodes-page__tab' : '' }`} onClick={clickOnEpisodeTab}>
             <div className="episodes-tab__title episode-tab__child">
                 <p className="episodes-tab__title__text episode-tab__child__p">{episode.title}</p>
             </div>
@@ -71,25 +75,24 @@ const EpisodeTab = observer(({episode, seasonNumUrlParam}) => {
                     <p>{reverseAirDate}</p>
                 </div>
             </div>
-            {weatherModel !== null
-                ?   <div className="weather-info episode-tab__child">
+            {weatherModel !== null &&
+                    <div className="weather-info episode-tab__child">
                         <p className="weather-info__title">Description for {reverseAirDate}:</p>
                         <p className="weather-info__description">{weatherModel.description}</p>
                     </div>
-                : false
             }
             <div className="search-weather episode-tab__child" onClick={e => e.stopPropagation()}>
                 <input
                     value={city}
-                    onChange={e => setCity(() => e.target.value)}
+                    onChange={e => setCity(e.target.value)}
                     type="text"
                     className="search-weather__input"
                     placeholder="Write a city"
-                    onFocus={() => {setErrorFromFetch(() => false); setErrorFromCondition(() => false)}}
+                    onFocus={() => {setErrorFromFetch(false); setErrorFromCondition(false)}}
                 />
-                <button className="search-weather__btn" onClick={() => fetchWeather()}>Get weather info</button>
-                    {errorFromCondition === true ? <p className="error-from-condition">Write name of the city!</p> : false}
-                    {errorFromFetch === true ? <p className="error-from-fetch">Write correct name of the city or the city not found!</p> : false}
+                <button className="search-weather__btn" onClick={fetchWeather}>Get weather info</button>
+                    {errorFromCondition === true && <p className="error-from-condition">Write name of the city!</p>}
+                    {errorFromFetch === true && <p className="error-from-fetch">Write correct name of the city or the city not found!</p>}
             </div>
             <div className="episode-tab__characters episode-tab__child">
                 <p className="episode-tab__characters__title">Characters:</p>
@@ -100,11 +103,10 @@ const EpisodeTab = observer(({episode, seasonNumUrlParam}) => {
                     />
                 )}
             </div>
-            {router.location.pathname === `/episode/${episode.episode_id}`
-                ? Object.entries(deaths).map(([index, death]) =>
+            {router.location.pathname === `/episode/${episode.episode_id}` &&
+                 Object.entries(deaths).map(([index, death]) =>
                     <DeathInfo key={+index} number={+index + 1} death={death[1]} />
                 )
-                : false
             }
         </div>
     );
