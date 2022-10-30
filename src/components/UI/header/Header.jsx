@@ -61,7 +61,7 @@ const Header = () => {
     return (
         <header className={`header anim-items ${startMount === false ? 'anim-active' : ''}`}>
             <div className="header__left-side">
-                {router.location.pathname !== '/' ? <button onClick={() => router.push('/')} className="header__content__links">Go home</button> : false}
+                {!router.location.pathname !== '/' ? <button onClick={() => router.push('/')} className="header__content__links">Go home</button> : false}
                 <button onClick={() => router.push('/top-deaths')} className="header__content__links">Top 5 Deaths</button>
                 {/*{router.location.pathname === `/episode/${routeParamsEpisodeId}` ? <button onClick={() => {setParams()}} className="header__content__links">Back to episodes</button> : false}*/}
             </div>
